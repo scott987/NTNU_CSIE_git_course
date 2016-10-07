@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>Git</title>
+		<title>Git 版本控制</title>
 
 		<link rel="stylesheet" href="css/reveal.css">
 		<link rel="stylesheet" href="css/theme/black.css">
@@ -24,7 +24,461 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Git</section>
+				<section>
+					<h1 style="margin-top:100px">Git 版本控制</h1>
+					<h4>陳哲雋</h4>
+				</section>
+
+				<section>
+					<h3>先來做個調查:</h3>
+					<p class="fragment">程式/網站開發經驗</p>
+					<p class="fragment">版本控制經驗</p>
+					<p class="fragment">shell 熟悉程度</p>
+				</section>
+
+				<section>
+					<section>
+						<h1>版本控制</h1>
+					</section>
+					<section>
+						<h1>先來說個故事好了</h1>
+					</section>
+					<section>
+						<h2>你們要寫一個專題</h2>
+					</section>
+					<section>
+						<h3>老師/老闆/同學/自己:</h3>
+						<h1 class="fragment zoom-in">再加個_____好了</h1>
+					</section>
+					<section>
+						<h2>於是你<del>&nbsp;被迫&nbsp;</del>開始努力.....</h2>
+					</section>
+					<section>
+						<ul style="list-style-type:none">
+							<li class>第13行加一點</li>
+							<li class="fragment">第121行刪掉</li>
+							<li class="fragment">第1201行做一點修改</li>
+							<li class="fragment">第331~403行加一個新功能</li>
+							<li class="fragment">等等!怎麼出新 bug 了 ∑(ι´Дン)ノ 我再改改改....</li>
+							<li class="fragment">我剛剛改了甚麼?隨便啦 (๑•́ ₃ •̀๑)</li>
+							<li class="fragment">為甚麼 crash 了 (|||ﾟдﾟ) 這一定是哪裡有問題...</li>
+							<li class="fragment">我覺得這東西一定有問題，但看起來好像都對...( ×ω× )</li>
+							<li class="fragment">管他的~結果一樣就行了啦~　ヽ(✿ﾟ▽ﾟ)ノ</li>
+						</ul>
+					</section>
+					<section>
+						<p>But....萬事最怕的But....</p>
+						<h3>交上去那天</h3>
+						<p class="fragment zoom-in" style="text-align:left;margin-left:50px" data-fragment-index="1">老師/老闆/同學/自己:</p>
+						<h2 class="fragment zoom-in" data-fragment-index="1">我覺得還是原本那個好了....</h2>
+					</section>
+					<section>
+						<img src="./images/kidding.png" alt="Are you kidding me?" style="width:25rem">
+						<p style="font-size:3rem">
+							┬─┬ ノ( ' - 'ノ) 我能翻了這張桌子嗎?
+						</p>
+					</section>
+				</section>
+
+				<section>
+					<section data-transition="fade-out">
+						<h4>為了避免這種問題你著麼做:</h4>
+						<img src="./images/dir1.PNG" alt="version 1" style="height:25rem">
+					</section>
+					<section data-transition="fade-in fade-out">
+						<img src="./images/dir2.PNG" alt="version 2" style="height:25rem">
+					</section>
+					<section data-transition="fade-in fade-out">
+						<img src="./images/dir3.PNG" alt="version 3" style="height:25rem">
+					</section>
+					<section data-transition="fade-in fade-out">
+						<img src="./images/dir4.PNG" alt="version 4" style="height:25rem">
+					</section>
+					<section>
+						<h4>但我要怎麼記錄我改了甚麼?</h4>
+						<ul>
+							<li>筆記本?</li>
+							<li>Excell?</li>
+						</ul>
+					</section>
+					<section>
+						<p style="font-size:3rem">三個月後就只有神知道了 ( ￣ 3￣)y▂ξ</p>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>再來說另外一個關於合作故事</h2>
+					</section>
+					<section>
+						<h3>你們要合作完成一個 project</h3>
+						<h4>合作當然不是一個做完傳給下個做</h4>
+						<h4>而你們決定用雲端空間來存放</h4>
+						<p class="fragment zoom-in" style="font-size:5rem">
+							but....又是一個but....
+						</p>
+					</section>
+					<section>
+						<h2>當大家陸陸續續把檔案上傳時.....</h2>
+						<h4 class="fragment">你們的計畫櫥櫃了(充滿了杯具(悲劇)與餐具(慘劇))</h4>
+					</section>
+					<section>
+						<p style="display:inline-block;margin:0.5rem">誰他X的改了我的 code !</p>
+						<p style="display:inline-block;margin:0.5rem">
+								我的比較好!
+						<p style="display:inline-block;margin:0.5rem">我三小時的努力...( ºΔº )</p>
+						<div>
+							<p style="float:left;position:relative;left:5rem;top:1rem">
+								我<br>X<br>他<br>媽<br>的<br>台<br>北<br>!
+							</p>
+							<a title="By The original uploader was Captain Blood at German Wikipedia (Transferred from de.wikipedia to Commons.) [Public domain], via Wikimedia Commons" href="https://commons.wikimedia.org/wiki/File%3AMons_Lactarius.jpg"><img width="512" alt="Mons Lactarius" src="https://upload.wikimedia.org/wikipedia/commons/6/64/Mons_Lactarius.jpg"/></a>
+							<p style="float:right;position:relative;right:5rem;top:2rem">
+								我<br>先<br>上<br>傳<br>的<br>!
+							</p>
+						</div>
+						<p style="display:inline-block;margin:0.5rem">這一切都是____的陰謀啦!</p><br>
+						<p style="display:inline-block;margin:0.5rem">誰寫的!這結果不對啊!Σ(;ﾟдﾟ)</p>
+					</section>
+					<section>
+						<h2>還可能因為同時上傳....</h2>
+						<img src="./images/GG.jpg" alt="GG" style="width:30rem">
+					</section>
+					<section>
+						<h3>隊友只能無奈表示:</h3>
+						<img src="./images/myfault.jpg" alt="怪我囉?">
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h1>版本控制</h1>
+					</section>
+					<section>
+						<h2 style="display:inline-block">本地端版本控制</h2>
+						<p style="display:inline-block">ex:rcs</p><br>
+						<img src="./images/localvc.png" alt="本地端版本控制" style="height:25rem">
+					</section>
+					<section>
+						<h2 style="display:inline-block">集中式版本控制</h2>
+						<p style="display:inline-block">ex:CVS、Subversion</p><br>
+						<img src="./images/cvcs.png" alt="本地端版本控制" style="height:25rem">
+					</section>
+					<section>
+						<h2 style="display:inline-block">分散式版本控制</h2>
+						<p style="display:inline-block">ex:Git</p><br>
+						<img src="./images/dvcs.png" alt="本地端版本控制" style="height:25rem">
+					</section>
+				</section>
+
+				<section>
+					<h1>安裝</h1>
+					<a href="https://git-scm.com/downloads" target="_blank">https://git-scm.com/downloads</a>
+				</section>
+
+				<section style="text-align:left;">
+					<h2 style="text-align:center">環境設定</h2>
+					<p style="font-family:consolas;margin-bottom:2.5rem;">git config --global user.email "your email"</p>
+					<p style="font-family:consolas;margin-bottom:2.5rem">git config --global user.name "Your Name"</p>
+					<p style="font-family:consolas;font-family:consolas;margin-bottom:2.5rem">git config --global color.ui true</p>
+				</section>
+
+				<section style="text-align:left">
+					<h2 style="text-align:center">額外設定</h2>
+					<p style="font-family:consolas;margin-bottom:2.5rem">git config --global alias.co commit</p>
+					<p style="font-family:consolas;margin-bottom:2.5rem">git config --global alias.st status</p>
+					<p style="font-family:consolas;margin-bottom:2.5rem">git config --global alias.lg "log --color --graph --all --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset' --abbrev-commit --"</p>
+				</section>
+
+				<section>
+					<p style="font-family:consolas;font-size:5rem">git help "command"</p>
+				</section>
+
+				<section>
+					<p style="font-family:consolas;font-size:5rem">git init</p>
+				</section>
+
+				<section>
+					<a href="https://github.com/" target="_blank" style="font-size:7rem;font-weight:900">GitHub</a>
+				</section>
+
+				<section>
+					<p style="font-size:5rem">public/private</p>
+					<a href="https://education.github.com" target="_blank">GitHub Education</a>
+				</section>
+
+				<section>
+					<p style="font-size:5rem">README.md</p>
+					<a href="https://guides.github.com/features/mastering-markdown/" target="_blank">Markdown</a>
+				</section>
+
+				<section>
+					<a style="font-size:5rem" href="https://github.com/github/gitignore/" target="_blank">.gitignore</a>
+				</section>
+
+				<section>
+					<a href="http://www.openfoundry.org/tw/licenses" style="font-size:5rem;font-weight:900;" target="_blank">Licence</a>
+					<div style="border:0.1rem solid;width:20rem;margin:auto"></div>
+					<a href="https://zh.wikipedia.org/wiki/%E5%95%A4%E9%85%92%E8%BB%9F%E9%AB%94" target="_blank">Beerware</a>, 
+					<a href="https://creativecommons.org/choose/zero/?lang=zh_TW" target="_blank">CC0</a>, 
+					<a href="https://zh.m.wikipedia.org/wiki/WTFPL" target="_blank">WTFPL</a>
+					<br>
+					<span class="fragment">
+						功課 License 建議: <a href="http://www.openfoundry.org/tw/licenses/29-apache-license-20apache-20" target="_blank">Apache License</a>
+						 or <a href="http://www.openfoundry.org/tw/licenses/32-gnu-general-public-license-20gpl" target="_blank">GPL</a>
+					</span>
+				</section>
+
+				<section>
+					<p style="font-family:consolas;font-size:5rem">git clone "git repo"</p>
+				</section>
+
+				<section>
+					<h1>練習</h1>
+					<p style="font-size:3rem">在GitHub上建立一個repo</p>
+				</section>
+
+				<section>
+					<p style="font-family:consolas;font-size:5rem">git status</p>
+					<p style="font-family:consolas;font-size:5rem" class="fragment">git st</p>
+				</section>
+
+				<section>
+					<p style="font-family:consolas;font-size:5rem">git add "file"</p>
+					<p style="font-family:consolas;font-size:5rem;height:5rem" class="fragment">git add <span style="font-size:10rem">.</span></p>
+				</section>
+
+				<section>
+					<p style="font-family:consolas;font-size:5rem">git commit</p>
+					<p style="font-family:consolas;font-size:5rem" class="fragment">git co</p>
+				</section>
+
+				<section>
+					<img src="https://git-scm.com/images/about/index1@2x.png" alt="add &amp; commit" style="background-color:white;height:25rem">
+				</section>
+
+				<section>
+					<p style="font-size:4rem">偷懶(｢･ω･)｢</p>
+					<p style="font-family:consolas;font-family:consolas;font-size:4rem">git commit -m "commit"&nbsp;</p>
+					<p style="font-family:consolas;font-size:4rem">git commit -am "commit"</p>
+				</section>
+
+				<section>
+					<p style="font-size:5rem">add救星</p>
+					<p style="font-family:consolas;font-size:5rem">git reset "file"</p>
+				</section>
+
+				<section>
+					<h1>練習</h1>
+					<p style="font-size:3rem">把剛剛新增的檔案做commit</p>
+					<p style="font-size:3rem">然後用git status確認commit成功</p>
+				</section>
+
+				<section>
+					<section>
+						<p style="font-size:5rem">何時該commit?</p>
+					</section>
+					<section>
+						<a href="http://i.imgur.com/o4HkPxa.png" style="font-size:3rem" target="_blank">拜託，不要讓人困擾(シ_ _)シ</a><br>
+						<a href="https://www.reddit.com/r/shittyprogramming/comments/1skq3s/my_buddy_is_a_phenomenal_programmer_but_really/" style="float:right;font-size:1.5rem" target="_blank">圖片來源</a>
+					</section>
+					<section>
+						<p>F_CK & sh_t commit </p>
+						<img src="./images/fuck.png" alt="fuck" style="height:25rem">
+						<a href="http://www.commitlogsfromlastnight.com/" target="_blank">http://www.commitlogsfromlastnight.com/</a>
+					</section>
+					<section>
+						<p>༼ つ ◕_◕ ༽つ Give RELAY</p>
+						<img src="./images/rely.png" alt="༼ つ ◕_◕ ༽つ Give RELAY" style="height:25rem">
+					</section>
+				</section>
+
+				<section>
+					<h2>差異查看</h2>
+					<p style="font-family:consolas;font-size:3rem">git diff</p>
+					<p style="font-family:consolas;font-size:3rem">git diff --cache</p>
+				</section>
+
+				<section>
+					<p style="font-family:consolas;font-size:4rem">git log</p>
+					<p style="font-family:consolas;font-size:4rem">git lg</p>
+					<p style="font-family:consolas;font-size:4rem">git show "revisions"</p>
+				</section>
+
+				<section>
+					<h2>回到舊版本</h2>
+					<p style="font-family:consolas;font-size:4rem">git checkout "revision"</p>
+				</section>
+
+				<section>
+					<h1>練習</h1>
+					<p style="font-size:3rem">至少新增三筆commit</p>
+					<p style="font-size:3rem">然後試著查看舊版本</p>
+				</section>
+
+					<section>
+					<h2>放棄當前編輯</h2>
+					<p style="font-family:consolas;font-size:4rem">git checkout -- "file"</p>
+				</section>
+
+				<section>
+					<h2>復原到舊版本</h2>
+					<p style="font-family:consolas;font-size:4rem">git revert "reversion"</p>
+					<p style="font-family:consolas;font-size:4rem">git reset "reversion"</p>
+					<p style="font-family:consolas;font-size:3.5rem">git reset --hard "reversion"</p>
+				</section>
+
+				<section>
+					<h2>不想再追蹤</h2>
+					<p style="font-family:consolas;font-size:4rem">git rm "file"</p><br>
+					<h2>已在stage</h2>
+					<p style="font-family:consolas;font-size:4rem">git rm --cached "file"</p>
+				</section>
+
+				<section>
+					<h2>重新命名</h2>
+					<p style="font-family:consolas;font-size:4rem">git mv "oldname" "newname"</p>
+					<p class="fragment">更換檔案位置</p>
+				</section>
+
+				<section>
+					<h1>練習</h1>
+					<p style="font-size:3rem">給大家玩一下以上功能</p>
+				</section>
+
+				<section>
+					<p style="font-family:consolas;font-size:5rem">git remote -v</p>
+				</section>
+
+				<section>
+					<p style="font-family:consolas;font-size:5rem">git push</p>
+				</section>
+
+				<section>
+					<h1>練習</h1>
+					<p style="font-size:3rem">把一個repo clone下來</p>
+					<p style="font-size:3rem">新增一commit並push上去</p>
+				</section>
+
+				<section>
+					<p style="font-family:consolas;font-size:4rem">git remote add "name" "URL"</p>
+				</section>
+
+				<section>
+					<p style="font-family:consolas;font-size:4rem">git remote rm "name"</p>
+					<p style="font-family:consolas;font-size:4rem">git remote remove "name"</p>
+				</section>
+
+				<section>
+					<p style="font-family:consolas;font-size:4rem">git pull "name"</p>
+					<p style="font-family:consolas;font-size:4rem" class="fragment">git push "name"</p>
+				</section>
+
+				<section>
+					<img src="./images/git-local-remote.png" alt="local &amp; remote" style="height:25rem;background-color:white;">
+					<br>
+					<a href="http://zoomq.qiniudn.com/ZQScrapBook/ZqFLOSS/data/20081210180347/" style="font-size:2rem">圖片來源</a>
+				</section>
+
+				<section>
+					<h1>練習</h1>
+					<p style="font-size:3rem">另外開一個新資料夾</p>
+					<p style="font-size:3rem">然後在這資料夾中pull repo</p>
+					<p style="font-size:3rem">最後新增幾筆commit後push回去</p>
+				</section>
+
+				<section>
+					<p style="font-family:consolas;font-size:8rem">Branch</p>
+				</section>
+
+				<section>
+					<img src="./images/git_branching_model.png" alt="git branching model" style="height:30rem;width:45rem">
+				</section>
+
+				<section>
+					<p style="font-family:consolas;font-size:5rem">git branch</p>
+					<p style="font-family:consolas;font-size:5rem">git branch -v</p>
+				</section>
+
+				<section>
+					<p style="font-family:consolas;font-size:6rem">create branch</p>
+					<p style="font-family:consolas;font-size:3.5rem">git branch "new branch"</p>
+					<p style="font-family:consolas;font-size:3.5rem">git checkout -b "new branch"</p>
+				</section>
+
+				<section>
+					<p style="font-family:consolas;font-size:6rem">更換branch</p>
+					<p style="font-family:consolas;font-size:4rem">git checkout "branch"</p>
+				</section>
+
+				<section>
+					<p style="font-family:consolas;font-size:3rem;">git push "remote" "remote_branch"</p><br>
+					<p style="font-family:consolas;font-size:3rem;">git push "remote" "local_branch":"remote_branch"</p>
+				</section>
+
+				<section>
+					<p style="font-family:consolas;font-size:3rem;">git pull "remote" "remote_branch"</p><br>
+				</section>
+
+				<section>
+					<p style="font-family:consolas;font-size:4rem">刪除遠端branch</p>
+					<p style="font-family:consolas;font-size:4rem">git push "remote" :"branch"</p>
+				</section>
+
+				<section>
+					<p style="font-family:consolas;font-size:4rem">刪除本地branch</p>
+					<p style="font-family:consolas;font-size:4rem">git branch -D "branch"</p>
+				</section>
+
+				<section>
+					<h1>練習</h1>
+					<p style="font-size:3rem">開幾個branch做前面指令的練習</p>
+					<p style="font-size:3rem">branch的push一定要試試看</p>
+				</section>
+
+				<section>
+					<img src="./images/git_branching_model.png" alt="git branching model" style="height:30rem;width:45rem">
+				</section>
+
+				<section>
+					<section>
+						<p style="font-family:consolas;font-size:4rem">git merge "branch"</p>
+					</section>
+
+					<section>
+						<p style="font-family:consolas;font-size:4rem">merge自動commit</p>
+						<p style="font-family:consolas;font-size:2.3rem">
+						git config --global core.mergeoptions --no-edit</p>
+					</section>
+				</section>
+
+				<section>
+					<h2>Git 的神奇應用</h2>
+					<h3><a href="https://blog.othree.net/log/2016/09/17/git-mrt/" target="_blank">捷運路線圖</a></h3>
+				</section>
+
+				<section>
+					<p style="font-family:consolas;font-size:5rem">Conflict</p>
+				</section>
+
+				<section>
+					<p style="font-family:consolas;font-size:5rem">git blame "file"</p>
+				</section>
+
+				<section>
+					<h1>練習</h1>
+					<p style="font-size:3rem">練習merge,並試著創造conflict</p>
+					<p style="font-size:3rem">嘗試自己解conflict</p>
+				</section>
+
+				<section>
+					<a href="https://pages.github.com/" target="_blank" style="font-family:consolas;font-size:8rem">GitHub Pages</a>
+					<p style="font-size:4rem" class="fragment">其實只要放到gh-pages的branch</p>
+				</section>
+
+				<section>
+					<p style="font-size:5rem;font-weight:900">同場加映: .git權限很重要</p>
+					<a href="https://youtu.be/04o-a8YGjzk" target="_blank">感嘆師父，讚嘆師父，Git超棒der</a>
+				</section>
 			</div>
 		</div>
 
